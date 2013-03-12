@@ -1,0 +1,53 @@
+SPP inference toolbox: Richard Mann (2011)
+
+This toolbox contains the code necessary to reproduce the results in the paper: Bayesian inference for identifying interaction rules in moving animal groups.
+
+Basic usage:
+
+P = sppABC(L,N,R,velocity,t,a,b,c,E, ba, p, plot_flag); 
+%Runs a simulation of the SPP model. Code can be modified to run either a geometrical or topological model by selecting the apprpriate neighbourhood function
+%Either: nhBlind3x.m for geometrical or nhTopoBlind3x.m for topological.
+%See function description for details of parameter values.
+
+---------------
+
+logP = logP_sppABC_{euclid, topo}(P,L,R,a,b,c,E, ba, p);
+%Gives the log probability of the data, P, given a particular set of parameter values for either the geometrical (euclid) or topological (topo) model
+
+---------------
+
+logP = logP_scan(P, L, R, A, B, C, E, BA, Q); or logP = logP_scan_topo(P, L, K, A, B, C, E, BA, Q);
+%Scans the parameter space defined by the vectors of possible parameter values and calculates the probability of the data P for each parameter set. 
+
+---------------
+
+results_script; %A script showing how the results in the paper were generated. Previously generated results are in the results directory.
+
+---------------
+
+make_figures_multipanel; %A script to take the results from the script above and make appropriate figures. By default this will use the pre-generated results in the results directory.
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+NB: Because the results files are very large (~ 2GB), these will be provided on demand
+Please contact rmann@math.uu.se if you wish to receive these.
+
+./results directory: contains several pre-generated result files:
+
+HUGEBENCHMARK_withBgen: contains results generated from geometrical simulations including an alignment term
+HUGEBENCHMARK_withoutBgen: contains results generated from geometrical simulations excluding an alignment term
+HUGEBENCHMARK_withBtopo: contains results generated from topological simulations including an alignment term
+HUGEBENCHMARK_Qfree: contains results from generated from geometrical simulations with alignment term allowing inferred value of update rate
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+The following files are provided courtesy of
+
+%Circular Statistics Toolbox for Matlab
+
+% By Philipp Berens and Marc J. Velasco, 2009
+% velasco@ccs.fau.edu
+
+circ_vmpdf.m
+circ_vmrnd.m
+log_circ_vmpdf.m (modified by R.Mann).
